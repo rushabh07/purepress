@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { CheckCircle, ArrowRight, Phone, ArrowLeft } from 'lucide-react'
 
 const WHATSAPP_NUMBER = '919925297301'
@@ -51,7 +51,9 @@ function WhatsAppIcon({ size = 18 }) {
 }
 
 export default function BookingPage() {
-  const [form, setForm] = useState(defaultForm)
+  const [searchParams] = useSearchParams()
+  const preSelectedService = searchParams.get('service') || ''
+  const [form, setForm] = useState({ ...defaultForm, service: preSelectedService })
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
 
@@ -140,7 +142,7 @@ Please confirm my pickup booking. Thank you!`
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => { setSubmitted(false); setForm(defaultForm) }}
+              onClick={() => { setSubmitted(false); setForm({ ...defaultForm, service: preSelectedService }) }}
               className="btn-primary"
             >
               Book Another Pickup

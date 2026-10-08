@@ -8,7 +8,6 @@ import ServicesPage from './pages/ServicesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import ServiceAreasPage from './pages/ServiceAreasPage'
-import TrackOrderPage from './pages/TrackOrderPage'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -27,19 +26,20 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const location = useLocation()
+
   return (
     <>
       <ScrollToTop />
       <Navbar />
-      <main>
-        <Routes>
+      <main key={location.pathname} className="page-enter">
+        <Routes location={location}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/book" element={<BookingPage />} />
+          <Route path="/book-pickup" element={<BookingPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/service-areas" element={<ServiceAreasPage />} />
-          {/* <Route path="/track-order" element={<TrackOrderPage />} /> */}
         </Routes>
       </main>
       <Footer />

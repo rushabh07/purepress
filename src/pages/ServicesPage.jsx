@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
+import Reveal from '../components/Reveal'
 
 const serviceCategories = [
   {
@@ -43,12 +44,36 @@ const serviceCategories = [
     items: ['Sports Shoes', 'Sneakers', 'Formal Shoes', 'Boots'],
   },
   {
-    title: 'Specialized Fabric Care',
-    desc: 'Expert treatment for carpets, leather, silk and premium fabrics.',
-    price: 'Starting from ₹150',
+    title: 'Carpet Cleaning',
+    desc: 'Deep steam extraction cleaning for carpets and area rugs of all sizes.',
+    price: 'From ₹12/sq.ft',
+    img: '/service-carpet.jpg',
+    alt: 'Steam cleaning a patterned area rug',
+    items: ['Area Rugs', 'Wall-to-Wall Carpets', 'Stain Treatment'],
+  },
+  {
+    title: 'Leather Item Care',
+    desc: 'Specialized cleaning and conditioning for leather goods and accessories.',
+    price: 'From ₹400',
+    img: '/service-leather.jpg',
+    alt: 'Premium leather items being professionally cared for',
+    items: ['Jackets', 'Bags', 'Shoes', 'Accessories'],
+  },
+  {
+    title: 'Silk & Premium Fabric Care',
+    desc: 'Expert treatment for silk, wool, velvet and other delicate luxury fabrics.',
+    price: 'From ₹250',
     img: '/service-silk.jpg',
     alt: 'Elegant premium fabric garments on hangers',
-    items: ['Carpet Cleaning', 'Leather Item Care', 'Silk/Premium Fabric', 'Stain Treatment'],
+    items: ['Silk Sarees', 'Wool Garments', 'Velvet Items', 'Designer Wear'],
+  },
+  {
+    title: 'Stain Treatment',
+    desc: 'Targeted stain removal for wine, coffee, ink, grease and stubborn marks.',
+    price: 'From ₹150',
+    img: '/service-dry-cleaning.jpg',
+    alt: 'Professional stain treatment on garments',
+    items: ['Food Stains', 'Ink Marks', 'Grease', 'Wine & Coffee'],
   },
 ]
 
@@ -76,53 +101,54 @@ export default function ServicesPage() {
       <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto container-px">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {serviceCategories.map((svc) => (
-              <div
-                key={svc.title}
-                className="group bg-white border border-navy-100 rounded-lg overflow-hidden hover:border-navy-200 hover:shadow-md transition-all duration-300 flex flex-col"
-              >
-                {/* Image */}
-                <div className="overflow-hidden aspect-[4/3]">
-                  <img
-                    src={svc.img}
-                    alt={svc.alt}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                  />
-                </div>
+            {serviceCategories.map((svc, i) => (
+              <Reveal key={svc.title} delay={i * 80}>
+                <div className="card-hover group bg-white border border-navy-100 rounded-lg overflow-hidden flex flex-col h-full">
+                  {/* Image */}
+                  <div className="overflow-hidden aspect-[4/3]">
+                    <img
+                      src={svc.img}
+                      alt={svc.alt}
+                      className="img-zoom w-full h-full object-cover"
+                    />
+                  </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-display font-bold text-navy-950 text-lg mb-2">
-                    {svc.title}
-                  </h3>
-                  <p className="text-sm text-navy-500 leading-relaxed mb-4">
-                    {svc.desc}
-                  </p>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-display font-bold text-navy-950 text-lg mb-2">
+                      {svc.title}
+                    </h3>
+                    <p className="text-sm text-navy-500 leading-relaxed mb-4">
+                      {svc.desc}
+                    </p>
 
-                  {/* Sub-items */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {svc.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-[11px] text-navy-600 bg-sand border border-navy-100 px-2 py-0.5"
+                    {/* Sub-items */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {svc.items.map((item) => (
+                        <span
+                          key={item}
+                          className="text-[11px] text-navy-600 bg-sand border border-navy-100 px-2 py-0.5"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-navy-50">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-semibold text-navy-700">{svc.price}</span>
+                      </div>
+                      <Link
+                        to={`/book-pickup?service=${encodeURIComponent(svc.title)}`}
+                        className="btn-primary w-full justify-center text-xs py-3"
                       >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-navy-50 mt-auto">
-                    <span className="text-xs font-semibold text-navy-700">{svc.price}</span>
-                    <Link
-                      to="/book"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy-900 hover:text-brand-600 transition-colors duration-200"
-                    >
-                      Explore Service
-                      <ArrowRight size={13} />
-                    </Link>
+                        Book This Service
+                        <ArrowRight size={14} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -131,21 +157,23 @@ export default function ServicesPage() {
       {/* CTA */}
       <div className="bg-navy-950 py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
-          <h2 className="font-display font-bold text-white text-2xl md:text-4xl mb-4">
-            Ready to Give Your Clothes Better Care?
-          </h2>
-          <p className="text-navy-400 text-sm md:text-base mb-8 max-w-md mx-auto">
-            Book a pickup today and experience professional fabric care at your doorstep.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/book" className="btn-light">
-              Book a Pickup
-              <ArrowRight size={15} />
-            </Link>
-            <Link to="/#pricing" className="btn-outline border-navy-700 text-white hover:bg-navy-800 hover:border-navy-600">
-              View Pricing
-            </Link>
-          </div>
+          <Reveal>
+            <h2 className="font-display font-bold text-white text-2xl md:text-4xl mb-4">
+              Ready to Give Your Clothes Better Care?
+            </h2>
+            <p className="text-navy-400 text-sm md:text-base mb-8 max-w-md mx-auto">
+              Book a pickup today and experience professional fabric care at your doorstep.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/book-pickup" className="btn-light btn-press">
+                Book a Pickup
+                <ArrowRight size={15} />
+              </Link>
+              <Link to="/#pricing" className="btn-outline border-navy-700 text-white hover:bg-navy-800 hover:border-navy-600">
+                View Pricing
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </div>
     </div>

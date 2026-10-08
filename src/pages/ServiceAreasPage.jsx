@@ -85,7 +85,7 @@ export default function ServiceAreasPage() {
               <p className="text-navy-400 text-base leading-relaxed mb-8 max-w-lg">
                 Wherever you are in the city, we'll pick up, clean and deliver your clothes back — no laundry runs required.
               </p>
-              <Link to="/book" className="btn-light inline-flex">
+              <Link to="/book-pickup" className="btn-light inline-flex">
                 Book a Pickup
                 <ArrowRight size={15} />
               </Link>
@@ -273,7 +273,7 @@ export default function ServiceAreasPage() {
             Schedule a pickup and let PurePress take care of the rest.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/book" className="btn-light">
+            <Link to="/book-pickup" className="btn-light">
               Book a Pickup
               <ArrowRight size={15} />
             </Link>

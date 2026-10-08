@@ -13,12 +13,11 @@ const quickLinks = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
   { label: 'Service Areas', to: '/service-areas' },
-  { label: 'Track Order', to: '/track-order' },
-  { label: 'How It Works', to: '/how-it-works' },
-  { label: 'Pricing', to: '/pricing' },
+  { label: 'How It Works', to: '/#how-it-works' },
+  { label: 'Pricing', to: '/#pricing' },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
-  { label: 'Book a Pickup', to: '/book' },
+  { label: 'Book a Pickup', to: '/book-pickup' },
 ]
 
 export default function Footer() {
@@ -108,7 +107,7 @@ export default function Footer() {
             </div>
             <div className="mt-6">
               <Link
-                to="/book"
+                to="/book-pickup"
                 className="btn-light text-sm px-5 py-2.5 inline-flex"
               >
                 Book a Pickup

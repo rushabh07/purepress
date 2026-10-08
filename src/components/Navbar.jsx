@@ -4,9 +4,8 @@ import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Services', to: '/#services' },
+  { label: 'Services', to: '/services' },
   { label: 'Service Areas', to: '/service-areas' },
-  { label: 'Track Order', to: '/track-order' },
   { label: 'How It Works', to: '/#how-it-works' },
   { label: 'Pricing', to: '/#pricing' },
   { label: 'About', to: '/about' },
@@ -50,7 +49,7 @@ export default function Navbar() {
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
+                  `nav-link text-sm font-medium transition-colors duration-200 ${
                     isActive
                       ? 'text-navy-950'
                       : 'text-navy-500 hover:text-navy-900'
@@ -65,7 +64,7 @@ export default function Navbar() {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-4">
             <button
-              onClick={() => navigate('/book')}
+              onClick={() => navigate('/book-pickup')}
               className="hidden lg:inline-flex btn-primary text-xs px-5 py-2.5"
             >
               Book a Pickup
@@ -105,7 +104,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           <button
-            onClick={() => { navigate('/book'); setOpen(false) }}
+            onClick={() => { navigate('/book-pickup'); setOpen(false) }}
             className="btn-primary mt-3 w-full text-center"
           >
             Book a Pickup

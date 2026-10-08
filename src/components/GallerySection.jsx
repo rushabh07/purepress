@@ -1,4 +1,5 @@
-// Gallery uses a mix of local generated images and Unsplash for variety
+import Reveal from './Reveal'
+
 const galleryItems = [
   {
     src: '/hero-laundry.jpg',
@@ -44,27 +45,28 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto container-px">
 
         {/* Header */}
-        <div className="mb-12">
-          <span className="label-text block mb-4">Our Work</span>
-          <h2 className="heading-lg text-3xl md:text-4xl">A Glimpse Inside</h2>
-          <p className="body-text mt-3 max-w-md text-sm">
-            The care and precision we bring to every order, every day.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-12">
+            <span className="label-text block mb-4">Our Work</span>
+            <h2 className="heading-lg text-3xl md:text-4xl">A Glimpse Inside</h2>
+            <p className="body-text mt-3 max-w-md text-sm">
+              The care and precision we bring to every order, every day.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Masonry-style grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[220px] gap-3">
           {galleryItems.map((item, i) => (
-            <div
-              key={i}
-              className={`overflow-hidden group ${item.span}`}
-            >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+            <Reveal key={i} delay={i * 80} className={item.span}>
+              <div className="overflow-hidden group h-full">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="img-zoom w-full h-full object-cover"
+                />
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import Reveal from './Reveal'
 
 const services = [
   {
@@ -57,66 +58,69 @@ export default function ServicesSection() {
     <section id="services" className="section-padding bg-cream">
       <div className="max-w-7xl mx-auto container-px">
         {/* Header */}
-        <div className="max-w-2xl mb-14">
-          <span className="label-text block mb-4">What We Do</span>
-          <h2 className="heading-lg text-3xl md:text-4xl mb-3">Our Services</h2>
-          <p className="body-text text-base">
-            Professional care for your clothes, curtains and everyday essentials.
-          </p>
-        </div>
+        <Reveal>
+          <div className="max-w-2xl mb-14">
+            <span className="label-text block mb-4">What We Do</span>
+            <h2 className="heading-lg text-3xl md:text-4xl mb-3">Our Services</h2>
+            <p className="body-text text-base">
+              Professional care for your clothes, curtains and everyday essentials.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((svc) => (
-            <div
-              key={svc.title}
-              className="group bg-white border border-navy-100 rounded-lg overflow-hidden hover:border-navy-200 hover:shadow-md transition-all duration-300 flex flex-col"
-            >
-              {/* Image */}
-              <div className="overflow-hidden aspect-[4/3]">
-                <img
-                  src={svc.img}
-                  alt={svc.alt}
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                />
-              </div>
+          {services.map((svc, i) => (
+            <Reveal key={svc.title} delay={i * 100}>
+              <div className="card-hover group bg-white border border-navy-100 rounded-lg overflow-hidden flex flex-col h-full">
+                {/* Image */}
+                <div className="overflow-hidden aspect-[4/3]">
+                  <img
+                    src={svc.img}
+                    alt={svc.alt}
+                    className="img-zoom w-full h-full object-cover"
+                  />
+                </div>
 
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
-                <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-600 mb-2">
-                  {svc.category}
-                </span>
-                <h3 className="font-display font-bold text-navy-950 text-lg mb-2">
-                  {svc.title}
-                </h3>
-                <p className="text-sm text-navy-500 leading-relaxed mb-4 flex-1">
-                  {svc.desc}
-                </p>
-                <div className="flex items-center justify-between pt-4 border-t border-navy-50">
-                  <span className="text-xs font-semibold text-navy-700">{svc.price}</span>
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy-900 hover:text-brand-600 transition-colors duration-200"
-                  >
-                    Explore Service
-                    <ArrowRight size={13} />
-                  </Link>
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-600 mb-2">
+                    {svc.category}
+                  </span>
+                  <h3 className="font-display font-bold text-navy-950 text-lg mb-2">
+                    {svc.title}
+                  </h3>
+                  <p className="text-sm text-navy-500 leading-relaxed mb-4 flex-1">
+                    {svc.desc}
+                  </p>
+                  <div className="flex items-center justify-between pt-4 border-t border-navy-50">
+                    <span className="text-xs font-semibold text-navy-700">{svc.price}</span>
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy-900 hover:text-brand-600 transition-colors duration-200"
+                    >
+                      Explore Service
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* View All Link */}
-        <div className="mt-12 text-center">
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-navy-900 hover:text-brand-600 transition-colors duration-200"
-          >
-            View All Services
-            <ArrowRight size={15} />
-          </Link>
-        </div>
+        <Reveal delay={600}>
+          <div className="mt-12 text-center">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-navy-900 hover:text-brand-600 transition-colors duration-200"
+            >
+              View All Services
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

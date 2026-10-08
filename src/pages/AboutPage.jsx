@@ -119,7 +119,7 @@ export default function AboutPage() {
         <div className="max-w-xl mx-auto px-6">
           <h2 className="font-display font-bold text-navy-950 text-2xl md:text-3xl mb-4">Experience the PurePress Difference</h2>
           <p className="text-navy-500 text-sm mb-8">Your first pickup is just a few clicks away.</p>
-          <Link to="/book" className="btn-primary">
+          <Link to="/book-pickup" className="btn-primary">
             Book a Pickup <ArrowRight size={15} />
           </Link>
         </div>

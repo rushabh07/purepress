@@ -26,7 +26,7 @@ export default function HeroSection() {
             <button
               id="hero-book-btn"
               onClick={() => navigate('/book')}
-              className="btn-primary"
+              className="btn-primary btn-press"
             >
               Book a Pickup
               <ArrowRight size={16} />
@@ -34,7 +34,7 @@ export default function HeroSection() {
             <button
               id="hero-explore-btn"
               onClick={() => navigate('/services')}
-              className="btn-outline"
+              className="btn-outline btn-press"
             >
               Explore Services
             </button>
@@ -67,7 +67,6 @@ export default function HeroSection() {
               alt="Professional laundry facility with neatly folded clean garments"
               className="w-full h-full object-cover"
             />
-            {/* Subtle left fade to blend with white bg */}
             <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent w-16" />
           </div>
         </div>

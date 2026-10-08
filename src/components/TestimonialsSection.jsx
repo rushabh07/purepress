@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react'
+import Reveal from './Reveal'
 
 const testimonials = [
   {
@@ -43,30 +44,34 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto container-px">
 
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="label-text block mb-4">Customer Reviews</span>
-          <h2 className="heading-lg text-3xl md:text-4xl">What Our Customers Say</h2>
-        </div>
+        <Reveal>
+          <div className="text-center mb-14">
+            <span className="label-text block mb-4">Customer Reviews</span>
+            <h2 className="heading-lg text-3xl md:text-4xl">What Our Customers Say</h2>
+          </div>
+        </Reveal>
 
         {/* Testimonials grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-navy-100">
           {testimonials.map((t, i) => (
-            <div key={i} className="bg-white p-8 flex flex-col">
-              <Stars count={t.rating} />
-              <p className="text-navy-700 text-sm leading-relaxed mt-5 mb-8 flex-1">
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-4 pt-5 border-t border-navy-100">
-                <div className="w-10 h-10 bg-navy-900 flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-xs font-bold">{t.initials}</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-navy-950 text-sm">{t.name}</div>
-                  <div className="text-xs text-navy-400 mt-0.5">{t.location}</div>
-                  <div className="text-xs text-brand-600 mt-0.5">{t.service}</div>
+            <Reveal key={i} delay={i * 150} className="h-full">
+              <div className="card-hover bg-white p-8 flex flex-col h-full">
+                <Stars count={t.rating} />
+                <p className="text-navy-700 text-sm leading-relaxed mt-5 mb-8 flex-1">
+                  "{t.text}"
+                </p>
+                <div className="flex items-center gap-4 pt-5 border-t border-navy-100">
+                  <div className="w-10 h-10 bg-navy-900 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xs font-bold">{t.initials}</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-navy-950 text-sm">{t.name}</div>
+                    <div className="text-xs text-navy-400 mt-0.5">{t.location}</div>
+                    <div className="text-xs text-brand-600 mt-0.5">{t.service}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
